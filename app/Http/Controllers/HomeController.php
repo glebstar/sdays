@@ -51,11 +51,11 @@ class HomeController extends Controller
             SELECT count(num) as cnum FROM (
                 SELECT
                     CASE 
-                    WHEN (exists(SELECT 1 FROM cloud_covers t2 WHERE t2.date = t.date + INTERVAL 1 day AND t2.value <= ? AND t2.city_id = ? AND date BETWEEN ? AND ?)) 
+                    WHEN (exists(SELECT 1 FROM cloud_covers t2 WHERE t2.date = t.date + INTERVAL 1 day AND t2.value <= ? AND t2.city_id = ? AND t2.date BETWEEN ? AND ?)) 
                     THEN @num
                     ELSE @num:=@num+1 END as num
                 FROM `cloud_covers` t
-                WHERE t.value <= ? AND t.city_id = ? AND date BETWEEN ? AND ?
+                WHERE t.value <= ? AND t.city_id = ? AND t.date BETWEEN ? AND ?
                 ) t3
             GROUP BY num
             ) t4
