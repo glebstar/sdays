@@ -19,6 +19,7 @@ class CreateCloudCoversTable extends Migration
             $table->date('date');
             $table->float('value');
             $table->index(['city_id']);
+            $table->index(['date']);
             $table->index(['value']);
             $table->timestamps();
         });
